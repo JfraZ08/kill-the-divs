@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 export default function Connexion(){
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
+    const navigate = useNavigate()
 
     const handelclick =  async () => {
         console.log('form', email, password)    
@@ -20,9 +21,8 @@ export default function Connexion(){
           console.log(response)
           const data = await response.json()
           console.log('response auth',data)
+          navigate('/home')
     }
-
-    
 
     return (
         <div>
