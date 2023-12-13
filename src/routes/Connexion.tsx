@@ -21,8 +21,10 @@ export default function Connexion(){
           console.log(response)
           const data = await response.json()
           console.log('response auth',data)
-          navigate('/home')
-    }
+          if(!data.error){
+            navigate('/home')
+         }
+     }
 
     return (
         <div>
