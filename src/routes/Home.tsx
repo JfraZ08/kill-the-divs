@@ -1,8 +1,9 @@
 import { useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 
 export default function Home() {
-    const jwt = localStorage.getItem('jwt')
-
+    const jwt = localStorage.getItem('admin')
+    const navigate = useNavigate()
     useEffect(() => {
         const checkToken = async () => {
             const response = await fetch("http://localhost:1337/api/users/me", {
@@ -13,8 +14,9 @@ export default function Home() {
                 method: "GET",
             })
             console.log(response)
-            const data = await response.json()
-            console.log('response auth',data)
+            if(response.status === 401){
+                navigate('/')
+            }
         }
         checkToken()
     })

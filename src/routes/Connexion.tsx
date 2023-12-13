@@ -17,13 +17,14 @@ export default function Connexion(){
                 "identifier": email,
                 "password": password
               }),
-          })
-          console.log(response)
-          const data = await response.json()
-          console.log('response auth',data)
-          if(!data.error){
+        })
+        console.log(response)
+        const data = await response.json()
+        console.log('response auth',data)
+        if(!data.error){
+            localStorage.setItem('admin', data.token)
             navigate('/home')
-         }
+        }
      }
 
     return (
